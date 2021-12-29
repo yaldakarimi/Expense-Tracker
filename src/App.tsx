@@ -1,5 +1,5 @@
 import { ExpenseModal } from "app/types";
-import { Expenses } from "components";
+import { Expenses, NewExpense } from "components";
 
 const App = () => {
   const expenses: Array<ExpenseModal> = [
@@ -25,10 +25,10 @@ const App = () => {
   ];
   return (
     <div className="container p-5 bg-gray-100 rounded-lg shadow-md mt-10">
-      <h1 className="font-semibold text-3xl text-gray-700 text-center my-5">
+      <h1 className="font-semibold text-4xl text-orange-500 text-center mb-8">
         Expense Tracker
       </h1>
-
+      <NewExpense />
       <Expenses items={expenses} />
     </div>
   );
