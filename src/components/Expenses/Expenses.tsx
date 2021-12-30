@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ExpenseModal } from "app/types";
 import { ExpenseFilter } from "components";
-
+import ExpenseChart from "./ExpenseChart";
 import ExpensesList from "./ExpensesList";
 
 interface Props {
@@ -42,7 +42,9 @@ const Expenses = ({ items }: Props) => {
           {filteredItems?.length === 1 ? "item" : "items"}
         </h2>
       </div>
-
+      {!!filteredItems?.length && filteredYear !== "all" && (
+        <ExpenseChart expenses={filteredItems} />
+      )}
       <ExpensesList items={filteredItems} />
     </div>
   );

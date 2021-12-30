@@ -1,0 +1,14 @@
+.chart-bar {
+  height: 100%;
+  width: 13px;
+}
+
+.chart-bar__inner {
+  height: 100%;
+  overflow: hidden;
+}
+
+.chart-bar__fill {
+  width: 100%;
+  transition: all 0.3s ease-out;
+}

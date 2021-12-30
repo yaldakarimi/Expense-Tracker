@@ -4,9 +4,10 @@ import { FormInput } from "components/General";
 
 interface Props {
   onSaveNewExpense: (newItem: NewExpenseModel) => void;
+  onCancel: () => void;
 }
 
-const ExpenseForm = ({ onSaveNewExpense }: Props) => {
+const ExpenseForm = ({ onSaveNewExpense, onCancel }: Props) => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
@@ -28,7 +29,7 @@ const ExpenseForm = ({ onSaveNewExpense }: Props) => {
 
     const expenseObject = {
       title: title,
-      amount: amount,
+      amount: +amount,
       date: new Date(date),
     };
 
@@ -36,6 +37,11 @@ const ExpenseForm = ({ onSaveNewExpense }: Props) => {
     setTitle("");
     setAmount("");
     setDate("");
+    onCancel();
+  };
+
+  const cancelOnClickHandler = () => {
+    onCancel();
   };
 
   return (
@@ -80,6 +86,14 @@ const ExpenseForm = ({ onSaveNewExpense }: Props) => {
         </div>
       </fieldset>
       <div className="flex justify-end">
+        <button
+          type="button"
+          onClick={cancelOnClickHandler}
+          className="px-2 py-1 rounded-md w-full md:w-2/12 mt-5 mr-2 text-zinc-50 font-bold bg-stone-400"
+        >
+          Cancel
+        </button>
+
         <button
           type="submit"
           className="px-2 py-1 rounded-md w-full md:w-2/12 mt-5 mr-2 text-zinc-50 font-bold bg-stone-400"
