@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { NewExpenseModel } from "app/types";
 import { FormInput } from "components/General";
 
-const ExpenseForm = () => {
+interface Props {
+  onSaveNewExpense: (newItem: NewExpenseModel) => void;
+}
+
+const ExpenseForm = ({ onSaveNewExpense }: Props) => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
@@ -18,12 +23,23 @@ const ExpenseForm = () => {
     setDate(e.target.value);
   };
 
-  useEffect(() => {
-    console.log(date);
-  }, [date]);
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const expenseObject = {
+      title: title,
+      amount: amount,
+      date: new Date(date),
+    };
+
+    onSaveNewExpense(expenseObject);
+    setTitle("");
+    setAmount("");
+    setDate("");
+  };
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <fieldset>
         <legend className="mb-5 font-bold text-zinc-50 text-lg">
           Add New Expense:
@@ -63,6 +79,14 @@ const ExpenseForm = () => {
           />
         </div>
       </fieldset>
+      <div className="flex justify-end">
+        <button
+          type="submit"
+          className="px-2 py-1 rounded-md w-full md:w-2/12 mt-5 mr-2 text-zinc-50 font-bold bg-stone-400"
+        >
+          Add Expense
+        </button>
+      </div>
     </form>
   );
 };

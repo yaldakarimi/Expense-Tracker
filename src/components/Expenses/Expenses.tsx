@@ -7,7 +7,7 @@ interface Props {
 
 const Expenses = ({ items }: Props) => {
   return (
-    <div className="border-2 border-indigo-500 rounded-md p-4 shadow-lg">
+    <div className="border-2 border-stone-500 rounded-md p-4 shadow-lg">
       {items?.map((item) => (
         <ExpenseItem key={item.id} item={item} />
       ))}

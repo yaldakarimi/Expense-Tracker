@@ -1,6 +1,9 @@
-export interface ExpenseModal {
-  id: string;
+export interface NewExpenseModel {
   title: string;
-  amount: number;
+  amount: string;
   date: Date;
+}
+
+export interface ExpenseModal extends NewExpenseModel {
+  id: string;
 }

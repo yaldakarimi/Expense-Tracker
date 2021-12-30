@@ -7,7 +7,7 @@ interface Props {
 
 const ExpenseItem = ({ item }: Props) => {
   return (
-    <Card className="flex flex-col items-stretch sm:flex-row mb-3 bg-gray-200  border-white border">
+    <Card className="flex flex-col items-stretch sm:flex-row mb-3 bg-stone-200  border-white border">
       <div className="expenseDate">
         <ExpenseDate date={item.date} />
       </div>
@@ -16,7 +16,7 @@ const ExpenseItem = ({ item }: Props) => {
           {item.title}
         </h1>
       </div>
-      <div className="expenseAmount w-full self-center  p-1 rounded-md border-2 border-white  bg-indigo-500 sm:flex-initial sm:w-28 ">
+      <div className="expenseAmount w-full self-center  p-1 rounded-md border-2 border-white  bg-yellow-500 sm:flex-initial sm:w-28 ">
         <h2 className="text-center self-center font-semibold text-white">
           $ {item.amount}
         </h2>
