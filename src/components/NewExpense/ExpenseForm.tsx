@@ -41,7 +41,7 @@ const ExpenseForm = ({ onSaveNewExpense }: Props) => {
   return (
     <form onSubmit={submitHandler}>
       <fieldset>
-        <legend className="mb-5 font-bold text-zinc-50 text-lg">
+        <legend className="mb-5 font-bold text-zinc-50 text-lg ml-2 mt-2">
           Add New Expense:
         </legend>
         <div className="md:flex">
