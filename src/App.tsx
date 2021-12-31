@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ExpenseModal } from "app/types";
+import { ToastContainer } from "react-toastify";
 import { Expenses, NewExpense } from "components";
 
 const DUMMY_EXPENSES: Array<ExpenseModal> = [
@@ -56,6 +57,7 @@ const App = () => {
 
   return (
     <div className="container p-5 bg-gray-100 rounded-lg shadow-md mt-10">
+      <ToastContainer autoClose={5000} />
       <h1 className="font-bold text-4xl text-orange-600 text-center mb-8">
         My Awesome Expense Tracker
       </h1>

@@ -1,5 +1,4 @@
 import { Card } from "components/General";
-import { FaTimes } from "react-icons/fa";
 import { ExpenseModal } from "app/types";
 import ExpenseDate from "./ExpenseDate";
 interface Props {

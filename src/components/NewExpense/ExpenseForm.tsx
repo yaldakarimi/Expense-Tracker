@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { NewExpenseModel } from "app/types";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { FormInput } from "components/General";
 
 interface Props {
@@ -32,6 +34,16 @@ const ExpenseForm = ({ onSaveNewExpense, onCancel }: Props) => {
       amount: +amount,
       date: new Date(date),
     };
+
+    const hasEmptyFields = Object.values(expenseObject).some(
+      (value) => value === ""
+    );
+
+    if (hasEmptyFields || !Object.keys(expenseObject.date).length) {
+      toast.error("Please fill in all fields!");
+
+      return;
+    }
 
     onSaveNewExpense(expenseObject);
     setTitle("");
