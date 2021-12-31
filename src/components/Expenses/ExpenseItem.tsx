@@ -1,11 +1,16 @@
 import { Card } from "components/General";
+import { FaTimes } from "react-icons/fa";
 import { ExpenseModal } from "app/types";
 import ExpenseDate from "./ExpenseDate";
 interface Props {
   item: ExpenseModal;
+  onDeleteExpense: (id: string) => void;
 }
 
-const ExpenseItem = ({ item }: Props) => {
+const ExpenseItem = ({ item, onDeleteExpense }: Props) => {
+  const deleteHandler = () => {
+    onDeleteExpense(item.id);
+  };
   return (
     <Card className="flex flex-col items-stretch sm:flex-row mb-3 bg-stone-200  border-white border">
       <div className="expenseDate">
@@ -16,6 +21,12 @@ const ExpenseItem = ({ item }: Props) => {
           {item.title}
         </h1>
       </div>
+      <button
+        onClick={deleteHandler}
+        className="bg-rose-500 w-full self-center  p-1 rounded-md border-2 border-white   sm:flex-initial sm:w-28 text-white"
+      >
+        Delete
+      </button>
       <div className="expenseAmount w-full self-center  p-1 rounded-md border-2 border-white  bg-yellow-500 sm:flex-initial sm:w-28 ">
         <h2 className="text-center self-center font-semibold text-white">
           $ {item.amount}

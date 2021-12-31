@@ -50,13 +50,17 @@ const App = () => {
     setExpenses((prev) => [newExpense, ...prev]);
   };
 
+  const onDeleteExpense = (id: string) => {
+    setExpenses((prev) => prev.filter((expense) => expense.id !== id));
+  };
+
   return (
     <div className="container p-5 bg-gray-100 rounded-lg shadow-md mt-10">
       <h1 className="font-bold text-4xl text-orange-600 text-center mb-8">
         My Awesome Expense Tracker
       </h1>
       <NewExpense onAddExpense={onAddExpense} />
-      <Expenses items={expenses} />
+      <Expenses items={expenses} onDeleteExpense={onDeleteExpense} />
     </div>
   );
 };

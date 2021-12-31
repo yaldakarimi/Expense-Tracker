@@ -6,9 +6,10 @@ import ExpensesList from "./ExpensesList";
 
 interface Props {
   items: Array<ExpenseModal>;
+  onDeleteExpense: (id: string) => void;
 }
 
-const Expenses = ({ items }: Props) => {
+const Expenses = ({ items, onDeleteExpense }: Props) => {
   const [filteredYear, setFilteredYear] = useState("all");
   const onFilterExpense = (selectedYear: string) => {
     setFilteredYear(selectedYear);
@@ -45,7 +46,7 @@ const Expenses = ({ items }: Props) => {
       {!!filteredItems?.length && filteredYear !== "all" && (
         <ExpenseChart expenses={filteredItems} />
       )}
-      <ExpensesList items={filteredItems} />
+      <ExpensesList items={filteredItems} onDeleteExpense={onDeleteExpense} />
     </div>
   );
 };
